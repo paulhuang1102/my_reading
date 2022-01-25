@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mighty_book/routes/app_pages.dart';
 
 void main() async {
@@ -12,6 +13,7 @@ void main() async {
   //     UserRepository(),
   //   ),
   // );
+  await Hive.initFlutter();
 
   runApp(const MyApp());
 }

@@ -7,13 +7,12 @@ part './app_routes.dart';
 
 abstract class AppPages {
   static final pages = [
-    // GetPage(
-    //   name: ROUTES.splash,
-    //   page: () => const SplashPage(),
-    // ),
     GetPage(
       name: ROUTES.home,
-      page: () => const HomePage(),
+      page: () => HomePage(),
+      bindings: [
+        BookBinding(),
+      ],
     ),
     GetPage(
       name: ROUTES.addBook,

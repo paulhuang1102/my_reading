@@ -1,20 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/route_manager.dart';
+import 'package:mighty_book/controllers/book_controller.dart';
 import 'package:mighty_book/routes/app_pages.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({ Key? key }) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
+
+  final BookController _controller = BookController.to;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(),
+      appBar: AppBar(),
+      body: Container(
+        child: Obx(() {
+          return Column(
+            children: _controller.list
+                .map(
+                  (el) => Container(
+                    child: Text(el.name),
+                  ),
+                )
+                .toList(),
+          );
+        }),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Get.toNamed(ROUTES.addBook);
         },
         child: Icon(Icons.add),
-        
       ),
     );
   }
