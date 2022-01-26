@@ -32,5 +32,13 @@ class BookController extends GetxController {
   updateList() async {
     final data = await _repo.getBooks();
     list(data);
+
+  }
+
+  removeBook(Book book) async {
+   
+    await _repo.deleteBook(book);
+    updateList();
+    Get.back();
   }
 }

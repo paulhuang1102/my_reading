@@ -3,12 +3,11 @@ import 'package:hive/hive.dart';
 // Run build to generate
 part 'vocabulary_model.g.dart';
 
-
 @HiveType(typeId: 1)
-class Vocabulary {
+class Vocabulary extends HiveObject {
   @HiveField(0)
   final String word;
-  
+
   @HiveField(1)
   final String bookId;
 

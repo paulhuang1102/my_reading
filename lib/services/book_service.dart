@@ -22,7 +22,7 @@ class BookService extends BaseService {
   }
 
   createBook(String name) async {
-    final uuid = Uuid();
+    const uuid = Uuid();
     await requireInit();
 
     final book = Book(
@@ -40,5 +40,12 @@ class BookService extends BaseService {
     final data = bookBox.values.toList();
 
     return data;
+  }
+
+  deleteBook(Book book) async {
+    await requireInit();
+
+    // await bookBox.delete(book);
+    book.delete();
   }
 }

@@ -31,6 +31,7 @@ class VocabularyController extends GetxController {
   }
 
   addVocabulary() async {
+    if (textController.text.isEmpty) return;
     Book book = Get.arguments as Book;
 
     await _repo.addVocabulary(

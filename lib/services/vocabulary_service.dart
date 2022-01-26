@@ -52,5 +52,11 @@ class VocabularyService extends BaseService {
     await box.put(v.bookId, list);
   }
 
+  Future deleteAllByBookId(String bookId) async {
+    await requireInit();
+
+    await box.delete(bookId);
+  }
+
   
 }

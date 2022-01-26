@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/route_manager.dart';
 import 'package:mighty_book/controllers/book_controller.dart';
+import 'package:mighty_book/pages/home_page/widgets/book_item.dart';
 import 'package:mighty_book/routes/app_pages.dart';
 
 class HomePage extends StatelessWidget {
@@ -22,9 +23,7 @@ class HomePage extends StatelessWidget {
                     onTap: () {
                       Get.toNamed(ROUTES.book, arguments: el);
                     },
-                    child: Container(
-                      child: Text(el.name),
-                    ),
+                    child: BookItem(el),
                   ),
                 )
                 .toList(),
