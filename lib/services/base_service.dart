@@ -2,7 +2,10 @@ class BaseService {
   bool isInit = false;
 
   init() {
-    isInit = true;  
+    if (isInit) {
+      return;
+    }
+    isInit = true;
   }
 
   requireInit() async {

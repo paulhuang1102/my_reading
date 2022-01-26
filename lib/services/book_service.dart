@@ -1,6 +1,7 @@
 import 'package:hive/hive.dart';
 import 'package:mighty_book/models/book_model.dart';
 import 'package:mighty_book/services/base_service.dart';
+import 'package:uuid/uuid.dart';
 
 class BookService extends BaseService {
   static final BookService _instance = BookService._internal();
@@ -11,8 +12,6 @@ class BookService extends BaseService {
 
   @override
   init() async {
-    print(isInit);
-
     if (isInit) {
       return;
     }
@@ -23,9 +22,11 @@ class BookService extends BaseService {
   }
 
   createBook(String name) async {
+    final uuid = Uuid();
     await requireInit();
 
     final book = Book(
+      id: uuid.v4(),
       name: name,
       userId: '1',
     );

@@ -18,8 +18,13 @@ class HomePage extends StatelessWidget {
           return Column(
             children: _controller.list
                 .map(
-                  (el) => Container(
-                    child: Text(el.name),
+                  (el) => InkWell(
+                    onTap: () {
+                      Get.toNamed(ROUTES.book, arguments: el);
+                    },
+                    child: Container(
+                      child: Text(el.name),
+                    ),
                   ),
                 )
                 .toList(),
