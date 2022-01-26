@@ -5,6 +5,7 @@ Widget confirmBtn(Function confirm) {
   return ElevatedButton(
       onPressed: () {
         confirm();
+        Get.back();
       },
       child: const Text("Confirm"));
 }
