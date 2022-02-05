@@ -15,9 +15,13 @@ class Book extends HiveObject {
   @HiveField(2)
   final String userId;
 
+  @HiveField(3)
+  final DateTime startAt;
+
   Book({
     required this.id,
     required this.name,
     required this.userId,
+    required this.startAt
   });
 }

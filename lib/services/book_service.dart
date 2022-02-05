@@ -29,6 +29,7 @@ class BookService extends BaseService {
       id: uuid.v4(),
       name: name,
       userId: '1',
+      startAt: DateTime.now()
     );
 
     final result = await bookBox.add(book);
