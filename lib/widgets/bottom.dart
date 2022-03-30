@@ -2,27 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'dart:math' as math;
 import 'dart:ui';
+import 'package:mighty_book/routes/app_pages.dart';
 
 const double minHeight = 100;
-const double iconStartSize = 44;
-const double iconEndSize = 120;
+const double iconStartSize = 50;
+const double iconEndSize = 80;
 const double iconStartMarginTop = 36;
 const double iconEndMarginTop = 80;
 const double iconsVerticalSpacing = 24;
 const double iconsHorizontalSpacing = 16;
 
 final List<Event> events = [
-  Event('steve-johnson.jpeg', 'Shenzhen GLOBAL DESIGN AWARD 2018', '4.20-30'),
-  Event('efe-kurnaz.jpg', 'Shenzhen GLOBAL DESIGN AWARD 2018', '4.20-30'),
-  Event('rodion-kutsaev.jpeg', 'Dawan District Guangdong Hong Kong', '4.28-31'),
+  Event(
+      icon: Icons.add_circle,
+      title: 'Add new book',
+      onPressed: () {
+        Get.toNamed(ROUTES.addBook);
+      }),
+  Event(
+    icon: Icons.settings,
+    title: 'Stettings',
+    onPressed: () {}
+  ),
+  // Event('rodion-kutsaev.jpeg', 'Dawan District Guangdong Hong Kong', '4.28-31'),
 ];
 
 class Event {
-  final String assetName;
-  final String title;
-  final String date;
-
-  Event(this.assetName, this.title, this.date);
+  final IconData icon;
+  final String? title;
+  final Function()? onPressed;
+  Event({required this.icon, this.title, this.onPressed});
 }
 
 class ExhibitionBottomSheet extends StatefulWidget {
@@ -65,8 +74,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
   double get iconSize => lerp(iconStartSize, iconEndSize);
 
   double iconTopMargin(int index) =>
-      lerp(iconStartMarginTop,
-          iconEndMarginTop + index * (iconsVerticalSpacing + iconEndSize)) +
+      lerp(0, iconEndMarginTop + index * (iconsVerticalSpacing + iconEndSize)) +
       headerTopMargin;
 
   double iconLeftMargin(int index) =>
@@ -88,10 +96,10 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
           left: Radius.circular(iconLeftBorderRadius),
           right: Radius.circular(iconRightBorderRadius),
         ),
-        child: Image.asset(
-          event.assetName,
-          fit: BoxFit.cover,
-          alignment: Alignment(lerp(1, 0), 0),
+        child: IconButton(
+          iconSize: iconSize * 0.9,
+          icon: Icon(event.icon, color: Theme.of(context).primaryColor),
+          onPressed: event.onPressed,
         ),
       ),
     );
@@ -105,8 +113,8 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
       height: iconSize,
       isVisible: _controller.status == AnimationStatus.completed,
       borderRadius: itemBorderRadius,
-      title: event.title,
-      date: event.date,
+      title: event.title ?? '',
+      onTap: event.onPressed,
     );
   }
 
@@ -156,18 +164,11 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                 borderRadius: BorderRadius.vertical(top: Radius.circular(32)),
               ),
               child: Stack(
-                    children: <Widget>[
-                      const MenuButton(),
-                      SheetHeader(
-                        fontSize: headerFontSize,
-                        topMargin: headerTopMargin,
-                      ),
-                      for (Event event in events)
-                        _buildFullItem(event),
-                      for (Event event in events) _buildIcon(event),
-                    ],
-                  ),
-              
+                children: <Widget>[
+                  for (Event event in events) _buildFullItem(event),
+                  for (Event event in events) _buildIcon(event),
+                ],
+              ),
             ),
           ),
         );
@@ -183,7 +184,8 @@ class ExpandedEventItem extends StatelessWidget {
   final bool isVisible;
   final double borderRadius;
   final String title;
-  final String date;
+  final Function()? onTap;
+  // final String date;
 
   const ExpandedEventItem({
     Key? key,
@@ -192,8 +194,9 @@ class ExpandedEventItem extends StatelessWidget {
     required this.isVisible,
     required this.borderRadius,
     required this.title,
-    required this.date,
+    // required this.date,
     required this.leftMargin,
+    this.onTap,
   }) : super(key: key);
 
   @override
@@ -219,20 +222,15 @@ class ExpandedEventItem extends StatelessWidget {
   }
 
   Widget _buildContent() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(title, style: const TextStyle(fontSize: 16)),
-        const SizedBox(height: 8),
-        Text(
-          date,
-          style: const TextStyle(
-            fontWeight: FontWeight.w300,
-            fontSize: 12,
-            color: Colors.grey,
-          ),
-        ),
-      ],
+    return InkWell(
+      onTap: onTap,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(title, style: const TextStyle(fontSize: 16)),
+        ],
+      ),
     );
   }
 }
@@ -250,29 +248,12 @@ class SheetHeader extends StatelessWidget {
     return Positioned(
       top: topMargin,
       child: Text(
-        'Booked Exhibition',
+        '',
         style: TextStyle(
           color: Colors.white,
           fontSize: fontSize,
           fontWeight: FontWeight.w500,
         ),
-      ),
-    );
-  }
-}
-
-class MenuButton extends StatelessWidget {
-  const MenuButton({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Positioned(
-      right: 0,
-      bottom: 24,
-      child: Icon(
-        Icons.menu,
-        color: Colors.white,
-        size: 28,
       ),
     );
   }

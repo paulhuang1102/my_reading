@@ -4,6 +4,7 @@ import 'package:get/route_manager.dart';
 import 'package:mighty_book/controllers/book_controller.dart';
 import 'package:mighty_book/pages/home_page/widgets/book_item.dart';
 import 'package:mighty_book/routes/app_pages.dart';
+import 'package:mighty_book/widgets/bottom.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -18,14 +19,8 @@ class HomePage extends StatelessWidget {
           SafeArea(
             child: SlidingCardsView(),
           ),
-          // ExhibitionBottomSheet(),
+          ExhibitionBottomSheet(),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Get.toNamed(ROUTES.addBook);
-        },
-        child: const Icon(Icons.add),
       ),
     );
   }
