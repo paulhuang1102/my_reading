@@ -18,10 +18,13 @@ class Book extends HiveObject {
   @HiveField(3)
   final DateTime startAt;
 
+  final String cover;
+
   Book({
     required this.id,
     required this.name,
     required this.userId,
-    required this.startAt
+    required this.startAt,
+    this.cover = 'assets/images/lulu_2.png',
   });
 }

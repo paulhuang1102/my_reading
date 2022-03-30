@@ -32,7 +32,7 @@ class BookService extends BaseService {
       startAt: DateTime.now()
     );
 
-    final result = await bookBox.add(book);
+    await bookBox.add(book);
   }
 
   Future<List<Book>> fetchBooks() async {

@@ -29,19 +29,18 @@ class BookPage extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.delete_forever),
             onPressed: () {
-              Get.defaultDialog(
+              Get.dialog(DefaultDialog(
                 title: 'Delete ${book.name}',
-                content: const Text('Are you sure you want to delete this book?'),
-                confirm: confirmBtn(() {
+                content: 'Are you sure you want to delete this book?',
+                confirm: () {
                   _controller.removeBook(book);
-                }),
-                cancel: cancelBtn(),
-              );
+                },
+              ));
             },
           ),
         ],
       ),
-      body: Container(
+      body: SizedBox(
         height: double.infinity,
         child: Stack(
           alignment: Alignment.topCenter,

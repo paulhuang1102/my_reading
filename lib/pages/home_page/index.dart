@@ -11,8 +11,16 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: const SlidingCardsView(),
+      // appBar: AppBar(),
+      body: Stack(
+        fit: StackFit.expand,
+        children: const [
+          SafeArea(
+            child: SlidingCardsView(),
+          ),
+          // ExhibitionBottomSheet(),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Get.toNamed(ROUTES.addBook);
@@ -55,8 +63,9 @@ class _SlidingCardsViewState extends State<SlidingCardsView> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: Get.height * 0.55,
-        child: Obx(() {
+      height: Get.height * 0.55,
+      child: Obx(
+        () {
           int index = -1;
           return PageView(
             controller: pageController,
@@ -69,12 +78,15 @@ class _SlidingCardsViewState extends State<SlidingCardsView> {
                 child: BookItem(
                   name: l.name,
                   date: l.startAt.toString(),
-                  assetName: 'assets/images/lulu_2.png',
+                  assetName: l.cover,
                   offset: (pageOffset ?? 0) - index,
                 ),
               );
             }).toList(),
           );
-        }));
+        },
+      ),
+    );
   }
 }
+

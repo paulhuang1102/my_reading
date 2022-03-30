@@ -11,7 +11,7 @@ abstract class AppPages {
   static final pages = [
     GetPage(
       name: ROUTES.home,
-      page: () => HomePage(),
+      page: () => const HomePage(),
       bindings: [
         BookBinding(),
       ],
