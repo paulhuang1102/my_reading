@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1086915128405-qmmvc9soain1jah12cfh1lorrhfmaame.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1086915128405-qmmvc9soain1jah12cfh1lorrhfmaame</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB6ecUD9rWqGV_EPNCcvV5Fzu6EQJKLDJo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1086915128405</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.mightyBook</string>
+	<key>PROJECT_ID</key>
+	<string>mightybook-6501a</string>
+	<key>STORAGE_BUCKET</key>
+	<string>mightybook-6501a.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1086915128405:ios:d97b8ba34c6fa883bcf8dc</string>
+</dict>
+</plist>

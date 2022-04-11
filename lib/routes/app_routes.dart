@@ -5,4 +5,5 @@ abstract class ROUTES {
   static const home = '/home';
   static const addBook = '/addBook';
   static const book = '/book';
+  static const scan = '/scan';
 }

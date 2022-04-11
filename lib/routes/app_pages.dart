@@ -4,6 +4,7 @@ import 'package:mighty_book/bindings/vocabulary_binding.dart';
 import 'package:mighty_book/pages/add_book_page/index.dart';
 import 'package:mighty_book/pages/book_page/index.dart';
 import 'package:mighty_book/pages/home_page/index.dart';
+import 'package:mighty_book/pages/scan_page/index.dart';
 
 part './app_routes.dart';
 
@@ -24,5 +25,6 @@ abstract class AppPages {
     GetPage(name: ROUTES.book, page: () => BookPage(), bindings: [
       VocabularyBinding(),
     ]),
+    GetPage(name: ROUTES.scan, page: () => ScanPage(), )
   ];
 }

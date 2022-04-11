@@ -103,11 +103,22 @@ class BookPage extends StatelessWidget {
                         controller: _vController.textController,
                       ),
                     ),
-                    ElevatedButton(
-                      child: const Text('Add'),
-                      onPressed: () {
-                        _vController.addVocabulary();
-                      },
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        ElevatedButton(
+                          child: const Text('Add'),
+                          onPressed: () {
+                            _vController.addVocabulary();
+                          },
+                        ),
+                        ElevatedButton(
+                          child: const Text('Scan'),
+                          onPressed: () {
+                            Get.toNamed('/scan');
+                          },
+                        ),
+                      ],
                     ),
                     const SizedBox(
                       height: 20,
